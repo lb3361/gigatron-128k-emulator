@@ -7,79 +7,153 @@
                     "directory": "roms/dev128k7",
                     "rom": "dev128k7.rom",
                     "screenshot": "screenshot.png",
-                    "name": "DEV7 (128K)",
-                    "description": "DEV7 for Gigatron 128K"
+                    "name": "dev7 for 128K Gigatron",
+                    "description": "lb3361"
                 },
                 {
                     "directory": "roms/v6",
                     "rom": "v6.rom",
                     "screenshot": "screenshot.png",
                     "name": "ROMv6.rom",
-                    "description": "Current official ROM"
+                    "description": "current official ROM"
                 },
                 {
                     "directory": "roms/vx0",
                     "rom": "vx0.rom",
                     "screenshot": "screenshot.png",
                     "name": "ROMvX0",
-                    "description": "At67's rom"
+                    "description": "at67"
                 },
                 {
                     "directory": "roms/dev128k7s8",
                     "rom": "dev128k7s8.rom",
                     "screenshot": "screenshot.png",
-                    "name": "DEV7 (128K, 8 bits sound)",
-                    "description": "DEV7 with 8 bit sound",
+                    "name": "dev7 with 8 bits sound",
+                    "description": "lb3361",
                     "audiobits": 8
                 },
                 {
                     "directory": "roms/dev7",
                     "rom": "dev7.rom",
                     "screenshot": "screenshot.png",
-                    "name": "DEV7",
-                    "description": "DEV7 for regular Gigatron"
+                    "name": "dev7 for regular Gigatron",
+                    "description": "lb3361"
                 }
             ]
         },
         {
-            "name" : "Historical Roms",
+            "name": "Demos",
             "programs": [
                 {
-                    "directory": "roms/v5a",
-                    "rom": "v5a.rom",
+                    "directory": "demos/rotator",
+                    "rom" : "/programs/roms/dev7/dev7.rom",
+                    "gt1": "rotator.gt1",
                     "screenshot": "screenshot.png",
-                    "name": "ROMv5a.rom"
+                    "name": "Rotator",
+                    "description": "PhiBrizzo"
                 },
                 {
-                    "directory": "roms/v4",
-                    "rom": "v4.rom",
+                    "directory": "demos/boing",
+                    "rom" : "/programs/roms/dev7/dev7.rom",
+                    "gt1": "Boing64k.gt1",
                     "screenshot": "screenshot.png",
-                    "name": "ROMv4.rom",
-                    "description": "Enduring classic"
+                    "name": "Boing",
+                    "description": "at67"
                 },
                 {
-                    "directory": "roms/v3",
-                    "rom": "v3.rom",
+                    "directory": "demos/ant11",
+                    "rom" : "/programs/roms/dev7/dev7.rom",
+                    "gt1": "ant11.gt1",
                     "screenshot": "screenshot.png",
-                    "name": "ROMv3.rom"
-                },
-                {
-                    "directory": "roms/v2",
-                    "rom": "v2.rom",
-                    "screenshot": "screenshot.png",
-                    "name": "ROMv2.rom"
-                },
-                {
-                    "directory": "roms/v1",
-                    "rom": "v1.rom",
-                    "screenshot": "screenshot.png",
-                    "name": "ROMv1.rom",
-                    "description": "First ever!"
+                    "name": "Ant11",
+                    "description": "gawater"
                 }
             ]
         },
         {
-            "name": "Chess Programs",
+            "name": "Games",
+            "programs": [
+                {
+                    "directory": "games/invader",
+                    "gt1": "Invader.gt1",
+                    "screenshot": "screenshot.png",
+                    "name": "Invader",
+                    "description": "at67"
+                },
+                {
+                    "directory": "games/pucmon",
+                    "gt1": "PucMon_ROMv5a.gt1",
+                    "screenshot": "screenshot.png",
+                    "name": "Pucmon",
+                    "description": "at67"
+                },
+                {
+                    "directory": "games/gtmine",
+                    "gt1": "gtmine.gt1",
+                    "screenshot": "screenshot.png",
+                    "name": "GtMine",
+                    "description": "hans61"
+                },
+                {
+                    "directory": "games/racer",
+                    "gt1": "Racer.gt1",
+                    "screenshot": "screenshot.png",
+                    "name": "Racer",
+                    "description": "kervinck"
+                },
+                {
+                    "directory": "games/bricks",
+                    "gt1": "Bricks_v2.gt1",
+                    "screenshot": "screenshot.png",
+                    "name": "Bricks",
+                    "description": "xbx"
+                },
+                {
+                    "directory": "games/sokoban",
+                    "gt1": "gtsokoban64k.gt1",
+                    "screenshot": "screenshot.png",
+                    "name": "GtSokoban",
+                    "description": "hans61"
+                },
+                {
+                    "directory": "games/2048",
+                    "gt1": "2048v2_2.gt1",
+                    "screenshot": "screenshot.png",
+                    "name": "2048",
+                    "description": "phibrozzo"
+                },
+                {
+                    "directory": "games/assembloids",
+                    "gt1": "Assembloids.gt1",
+                    "screenshot": "screenshot.png",
+                    "name": "Assembloids",
+                    "description": "phibrozzo"
+                },
+                {
+                    "directory": "games/minibox",
+                    "gt1": "MiniBOX.gt1",
+                    "screenshot": "screenshot.png",
+                    "name": "MiniBox",
+                    "description": "phibrozzo"
+                },
+                {
+                    "directory": "games/logo",
+                    "gt1": "LoGo.gt1",
+                    "screenshot": "screenshot.png",
+                    "name": "LoGo",
+                    "description": "phibrozzo"
+                },
+                {
+                    "directory": "games/gigatris",
+                    "gt1": "Gigatris.gt1",
+                    "screenshot": "screenshot.png",
+                    "name": "Gigatris",
+                    "description": "cwiis"
+                }
+            ]
+        },
+        {
+            "name": "Board games",
             "programs": [
                 {
                     "directory": "chess/mscp",
@@ -94,20 +168,165 @@
                     "gt1": "Microchess.gt1",
                     "screenshot": "screenshot.png",
                     "name": "Microchess",
-                    "description": "6502 chess"
+                    "description": "Peter Jennings' 6502 chess"
+                },
+                {
+                    "directory": "chess/reversi",
+                    "gt1": "Reversi.gt1",
+                    "screenshot": "screenshot.png",
+                    "name": "Reversi",
+                    "description": "PhiBrizzo's reversi"
                 }
             ]
         },
         {
-            "name": "Demos",
+            "name" : "ROMvX0 Games",
             "programs": [
                 {
-                    "directory": "demos/rotator",
-                    "rom" : "/programs/roms/dev7/dev7.rom",
-                    "gt1": "rotator.gt1",
+                    "directory": "vx0games/moonpatrol",
+                    "rom" : "/programs/roms/vx0/vx0.rom",
+                    "gt1": "mpatrol64k_ROMvX0.gt1",
                     "screenshot": "screenshot.png",
-                    "name": "Rotator",
-                    "description": "by PhiBrizzo"
+                    "name": "MoonPatrol",
+                    "description": "axelb"
+                },
+                {
+                    "directory": "vx0games/manicminer",
+                    "rom" : "/programs/roms/vx0/vx0.rom",
+                    "gt1": "manicminer_ROMvX0_64k41v1.3.gt1",
+                    "screenshot": "screenshot.png",
+                    "name": "ManicMiner",
+                    "description": "wbushby"
+                },
+                {
+                    "directory": "vx0games/pitfall",
+                    "rom" : "/programs/roms/vx0/vx0.rom",
+                    "gt1": "pitfall_ROMvX0_V1.1.1.gt1",
+                    "screenshot": "screenshot.png",
+                    "name": "Pitfall",
+                    "description": "wbushby"
+                },
+                {
+                    "directory": "vx0games/videopoker",
+                    "rom" : "/programs/roms/vx0/vx0.rom",
+                    "gt1": "VideoPoker_vX0.gt1",
+                    "screenshot": "screenshot.png",
+                    "name": "VideoPoker",
+                    "description": "delpozzo"
+                }
+            ]
+        },
+        {
+            "name" : "Fractals",
+            "programs": [
+                {
+                    "directory": "fractals/mandelbrot",
+                    "rom" : "/programs/roms/dev7/dev7.rom",
+                    "gt1": "Mandelbrot_v2.gt1",
+                    "screenshot": "screenshot.png",
+                    "name": "Mandelbrot",
+                    "description": "kervinck+others"
+                },
+                {
+                    "directory": "fractals/intfract",
+                    "rom" : "/programs/roms/dev7/dev7.rom",
+                    "gt1": "intfract-dev7.gt1",
+                    "screenshot": "screenshot.png",
+                    "name": "IntFract",
+                    "description": "veekoo"
+                },
+                {
+                    "directory": "fractals/mandelvx0",
+                    "rom" : "/programs/roms/vx0/vx0.rom",
+                    "gt1": "Mandelbrot_ROMvX0.gt1",
+                    "screenshot": "screenshot.png",
+                    "name": "Mandelbrot (ROMvX0)",
+                    "description": "at67"
+                },
+                {
+                    "directory": "fractals/ascbrot",
+                    "rom" : "/programs/roms/dev7/dev7.rom",
+                    "gt1": "ascbrot.gt1",
+                    "screenshot": "screenshot.png",
+                    "name": "AscBrot",
+                    "description": "veekoo"
+                }
+            ]
+        },
+        {
+            "name" : "Audio",
+            "programs": [
+                {
+                    "directory": "audio/music",
+                    "gt1": "music.gt1",
+                    "screenshot": "screenshot.png",
+                    "name": "Music (glcc)",
+                    "description": "lb3361"
+                },
+                {
+                    "directory": "audio/music",
+                    "gt1": "music.gt1",
+                    "rom" : "/programs/roms/dev128k7s8/dev128k7s8.rom",
+                    "audiobits": 8,
+                    "screenshot": "screenshot.png",
+                    "name": "Music (glcc, 8bits)",
+                    "description": "lb3361"
+                },
+                {
+                    "directory": "audio/musicgbas",
+                    "gt1": "Music64k_ROMv5a.gt1",
+                    "screenshot": "screenshot.png",
+                    "name": "Music64K (gbas)",
+                    "description": "at67 (five years before)"
+                },
+                {
+                    "directory": "audio/musicgbas",
+                    "gt1": "Music64k_ROMv5a.gt1",
+                    "rom" : "/programs/roms/dev128k7s8/dev128k7s8.rom",
+                    "audiobits": 8,
+                    "screenshot": "screenshot.png",
+                    "name": "Music64K (gbas, 8bits)",
+                    "description": "at67 (five years before)"
+                }
+            ]
+        },
+        {
+            "name" : "Older Roms",
+            "programs": [
+                {
+                    "directory": "roms/v5a",
+                    "rom": "v5a.rom",
+                    "screenshot": "screenshot.png",
+                    "name": "ROMv5a.rom",
+                    "description": "kervinck"
+                },
+                {
+                    "directory": "roms/v4",
+                    "rom": "v4.rom",
+                    "screenshot": "screenshot.png",
+                    "name": "ROMv4.rom",
+                    "description": "kervinck"
+                },
+                {
+                    "directory": "roms/v3",
+                    "rom": "v3.rom",
+                    "screenshot": "screenshot.png",
+                    "name": "ROMv3.rom",
+                    "description": "kervinck"
+                },
+                {
+                    "directory": "roms/v2",
+                    "rom": "v2.rom",
+                    "screenshot": "screenshot.png",
+                    "name": "ROMv2.rom",
+                    "description": "kervinck"
+                },
+                {
+                    "directory": "roms/v1",
+                    "rom": "v1.rom",
+                    "screenshot": "screenshot.png",
+                    "name": "ROMv1.rom",
+                    "description": "kervinck"
                 }
             ]
         }

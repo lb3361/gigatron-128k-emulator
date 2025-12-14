@@ -69,7 +69,7 @@ export class Gallery {
         // Concat
         return concat(
             this.loader.loadRomUrl(romPath),
-            timer(1000),
+            timer(800),
             (gt1Path) ? this.loader.loadUrl(gt1Path) : EMPTY);
     }
 
