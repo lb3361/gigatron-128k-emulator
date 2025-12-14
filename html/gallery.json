@@ -97,6 +97,19 @@
                     "description": "6502 chess"
                 }
             ]
+        },
+        {
+            "name": "Demos",
+            "programs": [
+                {
+                    "directory": "demos/rotator",
+                    "rom" : "/programs/roms/dev7/dev7.rom",
+                    "gt1": "rotator.gt1",
+                    "screenshot": "screenshot.png",
+                    "name": "Rotator",
+                    "description": "by PhiBrizzo"
+                }
+            ]
         }
     ]
 }
