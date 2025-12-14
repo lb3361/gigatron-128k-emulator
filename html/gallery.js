@@ -61,16 +61,25 @@ export class Gallery {
         Return observable. */
     loadProgram(program) {
         // Set audio bits if specified (default is 4)
+        const muted = this.audio.mute;
         const audiobits = program.audiobits || 4;
         this.audio.audiobits = audiobits;
         // Resolve rom and gt1
         const romPath = this.resolvePath(program, 'rom', '/gigatron.rom');
         const gt1Path = this.resolvePath(program, 'gt1', null);
-        // Concat
-        return concat(
-            this.loader.loadRomUrl(romPath),
-            timer(800),
-            (gt1Path) ? this.loader.loadUrl(gt1Path) : EMPTY);
+        // Sequence
+        let obs = this.loader.loadRomUrl(romPath);
+        if (gt1Path)
+            obs = concat(obs,
+                         defer(() => {
+                             this.audio.mute = true;
+                             return timer(800); }),
+                         this.loader.loadUrl(gt1Path),
+                         defer(() => {
+                             this.audio.mute = muted;
+                             return EMPTY;
+                         }) );
+        return obs;
     }
 
     /** Render the gallery into a container element
