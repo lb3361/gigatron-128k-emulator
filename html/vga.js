@@ -40,6 +40,35 @@ export class Vga {
         this.ctx.putImageData(this.imageData, 0, 0);
     }
 
+    /** Capture a thumbnail image (160x120) by sampling every fourth pixel */
+    captureThumbnail() {
+        // Create a temporary canvas for the thumbnail
+        const thumbCanvas = document.createElement('canvas');
+        thumbCanvas.width = 160;
+        thumbCanvas.height = 120;
+        const thumbCtx = thumbCanvas.getContext('2d');
+        // Create image data for thumbnail
+        const thumbData = thumbCtx.createImageData(160, 120);
+        const thumbPixels = thumbData.data;
+        // Sample every fourth pixel from the main canvas
+        let srcIndex = 0;
+        for (let y = 0; y < 120; y++) {
+            for (let x = 0; x < 160; x++) {
+                const destIndex = (y * 160 + x) * 4;
+                // Sample every 4th pixel in both dimensions
+                srcIndex = ((y * 4) * this.canvas.width + (x * 4)) * 4;
+                // Copy RGBA values
+                thumbPixels[destIndex] = this.pixels[srcIndex];
+                thumbPixels[destIndex + 1] = this.pixels[srcIndex + 1];
+                thumbPixels[destIndex + 2] = this.pixels[srcIndex + 2];
+                thumbPixels[destIndex + 3] = this.pixels[srcIndex + 3];
+            }
+        }
+        // Draw the thumbnail
+        thumbCtx.putImageData(thumbData, 0, 0);
+        return thumbCanvas;
+    }
+
     /** advance simulation by one tick */
     tick() {
         let out = this.cpu.out;

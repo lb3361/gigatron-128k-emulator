@@ -46,23 +46,102 @@
             --led-hilight-fill: url(#led-hilight-off);
         }
 
+        /* Menu bar styles */
+        #main-menu {
+            padding: 0rem 1rem;
+            background-color: #d8d9da !important;
+        }
+
+        .navbar-brand {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        /* Gallery styles */
+        #gallery-modal-body {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .gallery-section {
+            margin-bottom: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #444;
+        }
+
+        .gallery-section h3 {
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .program-carousel {
+            position: relative;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding-bottom: 10px;
+        }
+
+        .program-item {
+            display: inline-block;
+            width: 180px;
+            margin-right: 15px;
+            vertical-align: top;
+            cursor: pointer;
+        }
+
+        .program-screenshot {
+            width: 160px;
+            height: 120px;
+            border: 2px solid #666;
+            background-color: #000;
+            margin-bottom: 5px;
+        }
+
+        .program-name {
+            color: #fff;
+            font-size: 14px;
+            text-align: center;
+            word-wrap: break-word;
+        }
+
+        .program-description {
+            color: #aaa;
+            font-size: 12px;
+            text-align: center;
+            margin-top: 5px;
+            height: 30px;
+            overflow: hidden;
+            word-wrap: break-word;
+        }
+
+        .program-item:hover .program-screenshot {
+            border-color: #00f;
+        }
+
     </style>
 </head>
 
 <body>
+    <!-- MENU BAR -->
+    <nav id="main-menu" class="navbar navbar-expand-lg bg-light border-bottom mb-3 justify-content-between">
+        <span class="navbar-brand text-dark">Gigatron 128k Emulator</span>
+        <div class="d-flex gap-3">
+            <button id="gallery-button" class="btn btn-sm btn-outline-secondary">
+                <span class="oi oi-grid-three-up"></span> Gallery
+            </button> &nbsp;
+            <button id="screenshot-button" class="btn btn-sm btn-outline-secondary">
+                <span class="oi oi-camera"></span> Screenshot
+            </button> &nbsp;
+            <button id="help-button" class="btn btn-sm btn-outline-secondary">
+                <span class="oi oi-question-mark"></span> Help
+            </button>
+        </div>
+    </nav>
+
     <div class="container">
         <div class="row mt-3">
             <div class="col">
-                <div class="mx-auto" style="width:640px;">
-                    <!-- LOGO -->
-<!--
-                    <a href="https://gigatron.io">
-						<img src="https://gigatron.io/wp-content/uploads/2018/02/cropped-logo2.png" width="350" height="70">
-					</a>
-
-                    <hr>
--->
-
+                <div class="mx-auto" style="width:660px;">
                     <!-- BLINKENLIGHTS -->
                     <svg xmlns="http://www.w3.org/2000/svg" xlink:xmlns="http://www.w3.org/1999/xlink" width="80" height="24">
                         <defs>
@@ -184,7 +263,7 @@
                             </svg>
                         </div>
 
-                        <div class="col">
+                        <div class="col mx-0">
                             <!-- VOLUME -->
                             <div class="form-row">
                                 <div class="col-sm-10">
@@ -215,25 +294,6 @@
                             </form>
                         </div>
                     </div>
-
-                    <hr>
-                    <!-- KEYMAP -->
-                    Keyboard shortcuts:
-                    <p>
-                    <dl class="row">
-                        <dt class="col-sm-2"><span class="badge badge-pill badge-secondary">[A] button</span></dt>
-                        <dd class="col-sm-4"><kbd>Delete/End key</kbd></dd>
-
-                        <dt class="col-sm-2"><span class="badge badge-pill badge-secondary">[B] button</span></dt>
-                        <dd class="col-sm-4"><kbd>Insert/Home key</kbd></dd>
-
-                        <dt class="col-sm-2"><span class="badge badge-pill badge-secondary">[Select] button</span></dt>
-                        <dd class="col-sm-4"><kbd>PageDown key</kbd></dd>
-
-                        <dt class="col-sm-2"><span class="badge badge-pill badge-secondary">[Start] button</span></dt>
-                        <dd class="col-sm-4"><kbd>PageUp key</kbd></dd>
-                    </dl>
-
                 </div>
             </div>
         </div>
@@ -252,6 +312,56 @@
             </div>
         </div>
     </div>
+
+    <!-- GALLERY MODAL -->
+    <div id="gallery-modal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Gallery</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="oi oi-x"></span>
+                    </button>
+                </div>
+                <div id="gallery-modal-body" class="modal-body">
+                    <div id="gallery-sections" class="container-fluid">
+                        <!-- Sections will be added here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HELP MODAL -->
+    <div id="help-modal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Help</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="oi oi-x"></span>
+                    </button>
+                </div>
+                <div id="help-modal-body" class="modal-body">
+                        <h5>Keyboard Shortcuts</h5>
+                        <dl class="row">
+                            <dt class="col-sm-2"><span class="badge badge-pill badge-secondary">[A] button</span></dt>
+                            <dd class="col-sm-4"><kbd>Delete/End key</kbd></dd>
+
+                            <dt class="col-sm-2"><span class="badge badge-pill badge-secondary">[B] button</span></dt>
+                            <dd class="col-sm-4"><kbd>Insert/Home key</kbd></dd>
+
+                            <dt class="col-sm-2"><span class="badge badge-pill badge-secondary">[Select] button</span></dt>
+                            <dd class="col-sm-4"><kbd>PageDown key</kbd></dd>
+
+                            <dt class="col-sm-2"><span class="badge badge-pill badge-secondary">[Start] button</span></dt>
+                            <dd class="col-sm-4"><kbd>PageUp key</kbd></dd>
+                        </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>

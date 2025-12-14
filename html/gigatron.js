@@ -21,6 +21,9 @@ export class Gigatron {
         for (let i = 0; i < this.ram.length; i++) {
             this.ram[i] = randomUint8();
         }
+        // initial rom
+        this.rom[0] = 0xfc00; // bra(0x00)
+        this.rom[1] = 0x0000; // ld(0x00)
     }
 
     /** reset registers to power-on state */

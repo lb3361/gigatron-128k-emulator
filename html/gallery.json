@@ -1,0 +1,102 @@
+{
+    "sections": [
+        {
+            "name": "Current Roms",
+            "programs": [
+                {
+                    "directory": "roms/dev128k7",
+                    "rom": "dev128k7.rom",
+                    "screenshot": "screenshot.png",
+                    "name": "DEV7 (128K)",
+                    "description": "DEV7 for Gigatron 128K"
+                },
+                {
+                    "directory": "roms/v6",
+                    "rom": "v6.rom",
+                    "screenshot": "screenshot.png",
+                    "name": "ROMv6.rom",
+                    "description": "Current official ROM"
+                },
+                {
+                    "directory": "roms/vx0",
+                    "rom": "vx0.rom",
+                    "screenshot": "screenshot.png",
+                    "name": "ROMvX0",
+                    "description": "At67's rom"
+                },
+                {
+                    "directory": "roms/dev128k7s8",
+                    "rom": "dev128k7s8.rom",
+                    "screenshot": "screenshot.png",
+                    "name": "DEV7 (128K, 8 bits sound)",
+                    "description": "DEV7 with 8 bit sound",
+                    "audiobits": 8
+                },
+                {
+                    "directory": "roms/dev7",
+                    "rom": "dev7.rom",
+                    "screenshot": "screenshot.png",
+                    "name": "DEV7",
+                    "description": "DEV7 for regular Gigatron"
+                }
+            ]
+        },
+        {
+            "name" : "Historical Roms",
+            "programs": [
+                {
+                    "directory": "roms/v5a",
+                    "rom": "v5a.rom",
+                    "screenshot": "screenshot.png",
+                    "name": "ROMv5a.rom"
+                },
+                {
+                    "directory": "roms/v4",
+                    "rom": "v4.rom",
+                    "screenshot": "screenshot.png",
+                    "name": "ROMv4.rom",
+                    "description": "Enduring classic"
+                },
+                {
+                    "directory": "roms/v3",
+                    "rom": "v3.rom",
+                    "screenshot": "screenshot.png",
+                    "name": "ROMv3.rom"
+                },
+                {
+                    "directory": "roms/v2",
+                    "rom": "v2.rom",
+                    "screenshot": "screenshot.png",
+                    "name": "ROMv2.rom"
+                },
+                {
+                    "directory": "roms/v1",
+                    "rom": "v1.rom",
+                    "screenshot": "screenshot.png",
+                    "name": "ROMv1.rom",
+                    "description": "First ever!"
+                }
+            ]
+        },
+        {
+            "name": "Chess Programs",
+            "programs": [
+                {
+                    "directory": "chess/mscp",
+                    "gt1": "mscp.gt1",
+                    "screenshot": "screenshot.png",
+                    "name": "MSCP",
+                    "description": "Marcel's chess program"
+                },
+                {
+                    "directory": "chess/microchess",
+                    "rom" : "/programs/roms/v6/v6.rom",
+                    "gt1": "Microchess.gt1",
+                    "screenshot": "screenshot.png",
+                    "name": "Microchess",
+                    "description": "6502 chess"
+                }
+            ]
+        }
+    ]
+}

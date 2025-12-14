@@ -19,6 +19,9 @@ import {
 import {
     Spi,
 } from './spi.js';
+import {
+    Gallery,
+} from './gallery.js';
 
 const {
     finalize,
@@ -37,7 +40,7 @@ $(function() {
     let loadFileInput = $('#load-file-input');
     let vhdLabel = $('#vhd-label');
     let mountButton = $('#mount');
-    let unmountButton = $('#unmount');    
+    let unmountButton = $('#unmount');
 
     /** Trigger a keydown/keyup event in response to a mousedown/mouseup event
      * @param {JQuery} $button
@@ -180,7 +183,10 @@ $(function() {
     let loader = new Loader(cpu);
 
     let spi = new Spi(cpu, 0);
+
     spi.loadvhdurl('./sd.vhd');
+
+    let gallery = new Gallery(loader, audio);
 
     muteButton.click(function() {
         audio.mute = true;
@@ -202,7 +208,7 @@ $(function() {
         spi.setvhdlabel();
     });
 
-    
+
     volumeSlider.val(100 * audio.volume);
     volumeSlider.on('input', function(event) {
         let target = event.target;
@@ -252,8 +258,76 @@ $(function() {
                     <span class="oi oi-warning"></span> ${error.message}\
                 </p>`)),
             });
-    }        
-    
+    }
+
+    /** Show help modal */
+    $('#help-button').click(function() {
+        const $modalBody = $('#help-modal-body');
+        $('#help-modal').modal('show');
+    });
+
+    /** Capture screenshot and download as PNG */
+    $('#screenshot-button').click(function() {
+        try {
+            // Capture thumbnail from VGA
+            const thumbCanvas = vga.captureThumbnail();
+            // Convert to PNG data URL
+            const pngDataUrl = thumbCanvas.toDataURL('image/png');
+            // Create download link
+            const downloadLink = document.createElement('a');
+            downloadLink.href = pngDataUrl;
+            downloadLink.download = 'screenshot.png';
+            // Trigger download
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+        } catch (error) {
+            console.error('Error capturing screenshot:', error);
+            showError($(`
+                <p>Could not capture screenshot</p>
+                <hr>
+                <p class="alert alert-danger">
+                    <span class="oi oi-warning"></span> ${error.message}
+                </p>`));
+        }
+    });
+
+    $('#gallery-button').click(async function() {
+        const $galleryContainer = $('#gallery-sections');
+
+        try {
+            // Render the gallery using the gallery object's method
+            await gallery.renderGallery($galleryContainer);
+
+            // Add click handlers for program items
+            $('.program-item').on('click', function() {
+                const program = $(this).data('program');
+                gamepad.stop()
+                spi.stop();
+                $('#gallery-modal').modal('hide');
+                return gallery.loadProgram(program)
+                    .pipe(finalize(() => {
+                        gamepad.start();
+                        spi.start();
+                    }))
+                    .subscribe({
+                        error: (error) => showError($(`\
+                <p>\
+                   Could not load program ${program.name}\
+                </p>\
+                <hr>\
+                <p class="alert alert-danger">\
+                    <span class="oi oi-warning"></span> ${error.message}\
+                </p>`)),
+                    });
+            })
+            $('#gallery-modal').modal('show');
+        } catch (error) {
+            console.error('Error rendering gallery:', error);
+            $galleryContainer.append('<p>Error loading gallery.</p>');
+        }
+    });
+
     loadFileInput
         .on('click', (event) => {
             loadFileInput.closest('form').get(0).reset();
@@ -272,7 +346,7 @@ $(function() {
                 }
             }
         });
-    
+
     $(document)
         .on('dragenter', (event) => {
             event.preventDefault();
@@ -334,7 +408,7 @@ $(function() {
             blinkenLights.tick(); // don't need realtime update
             gamepad.tick();
         }, 20);
-	
+
         // Chrome suspends the AudioContext on reload
         // and doesn't allow it to be resumed unless there
         // is user interaction
@@ -371,6 +445,9 @@ $(function() {
                 </p>`)),
             });
     }
+
+    // Load gallery in background
+    gallery.loadGallery();
 
     startRunLoop(); // nothing bad happens...
     loadRomUrl(arg_rom || romUrl);
