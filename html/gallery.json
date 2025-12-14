@@ -275,18 +275,74 @@
                 {
                     "directory": "audio/musicgbas",
                     "gt1": "Music64k_ROMv5a.gt1",
-                    "screenshot": "screenshot.png",
-                    "name": "Music64K (gbas)",
-                    "description": "at67 (five years before)"
-                },
-                {
-                    "directory": "audio/musicgbas",
-                    "gt1": "Music64k_ROMv5a.gt1",
                     "rom" : "/programs/roms/dev128k7s8/dev128k7s8.rom",
                     "audiobits": 8,
                     "screenshot": "screenshot.png",
                     "name": "Music64K (gbas, 8bits)",
-                    "description": "at67 (five years before)"
+                    "description": "at67 (5 years before)"
+                },
+                {
+                    "directory": "audio/soundfx",
+                    "gt1": "SndFx.gt1",
+                    "rom" : "/programs/roms/dev128k7s8/dev128k7s8.rom",
+                    "audiobits": 8,
+                    "screenshot": "screenshot.png",
+                    "name": "SndFx (gbas, 8bits)",
+                    "description": "at67"
+                }
+            ]
+        },
+        {
+            "name" : "Tools",
+            "programs": [
+                {
+                    "directory": "tools/cardboot",
+                    "gt1": "CardBoot_v2.gt1",
+                    "screenshot": "screenshot.png",
+                    "name": "CardBoot",
+                    "description": "kervinck+lb3361"
+                },
+                {
+                    "directory": "tools/basic",
+                    "gt1": "TinyBasic.gt1",
+                    "screenshot": "screenshot.png",
+                    "name": "TinyBasic",
+                    "description": "kervinck"
+                },
+                {
+                    "directory": "tools/msbasic",
+                    "gt1": "MSBASIC.gt1",
+                    "screenshot": "screenshot.png",
+                    "name": "MSBASIC (6502)",
+                    "description": "kervinck"
+                },
+                {
+                    "directory": "tools/apple1",
+                    "gt1": "Apple1.gt1",
+                    "screenshot": "screenshot.png",
+                    "name": "Apple1 (6502)",
+                    "description": "kervinck"
+                },
+                {
+                    "directory": "tools/wozmon",
+                    "gt1": "WozMon.gt1",
+                    "screenshot": "screenshot.png",
+                    "name": "WozMon (vcpu)",
+                    "description": "kervinck"
+                },
+                {
+                    "directory": "tools/spicard",
+                    "gt1": "SpiCard.gt1",
+                    "screenshot": "screenshot.png",
+                    "name": "SpiCard",
+                    "description": "lb3361"
+                },
+                {
+                    "directory": "tools/gtforth",
+                    "gt1": "GtForth.gt1",
+                    "screenshot": "screenshot.png",
+                    "name": "GtForth",
+                    "description": "hsnaves"
                 }
             ]
         },
