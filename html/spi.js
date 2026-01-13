@@ -47,6 +47,7 @@ export class Spi {
      */
     constructor(cpu, id) {
         this.cpu = cpu
+        this.prevctrl = this.cpu.ctrl;
         /* spi stuff */
         this.cs = (id >=0 && id < 4) ? (4 << id) : 0;
         this.mask = 0;
@@ -68,9 +69,10 @@ export class Spi {
 
     /** Advance spi simulation by one tick */
     tick() {
-        let b = this.cpu.prevctrl;
-        if (b >= 0) {
+        if (this.cpu.ctrl != this.prevctrl) {
             let a = this.cpu.ctrl;
+            let b = this.prevctrl;
+            this.prevctrl = a;
             let selected = this.cs && !(a & this.cs);
             if (selected && (b & this.cs)) {
                 this.mask = 0x80;

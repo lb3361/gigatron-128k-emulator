@@ -18,10 +18,9 @@ export class BlinkenLights {
     tick() {
         let outx = this.cpu.outx & 0x0f;
         let changed = this.outx ^ outx;
-
         if (changed) {
             for (let i = 0; i < 4; i++) {
-                if (changed & (1 << i)) {
+                if (changed & (8 >> i)) {
                     $(`.led-${i}`).toggleClass('led-on led-off');
                 }
             }

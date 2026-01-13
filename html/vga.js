@@ -28,6 +28,8 @@ export class Vga {
         this.maxCol = this.minCol + options.horizontal.visible;
         this.pixel = 0;
         this.out = 0;
+        this.skipFrames = 0;
+        this.skipCounter = 0;
         // turn all pixels black with full alpha
         for (let i = 0; i < this.pixels.length; i++) {
             this.pixels[i] = (i % 4) == 3 ? 255 : 0;
@@ -77,7 +79,12 @@ export class Vga {
         if (falling & VSYNC) {
             this.row = -1; // After 4 more CPU cycles HSYNC increments row to 0
             this.pixel = 0;
-            this.render();
+            if (this.skipCounter > 0) {
+                this.skipCounter--;
+            } else {
+                this.skipCounter = this.skipFrames;
+                this.render();
+            }
         }
 
         if (falling & HSYNC) {
@@ -89,22 +96,19 @@ export class Vga {
         // if it follows immediately after it, so it got moved down here
         this.out = out;
 
-        if ((this.row >= this.minRow && this.row < this.maxRow) &&
-            (this.col >= this.minCol && this.col < this.maxCol)) {
+        if ((this.skipCounter == 0) &&
+            (this.row >= this.minRow && this.row < this.maxRow) &&
+            (this.col >= this.minCol && this.col < this.maxCol) )
+        {
             let pixels = this.pixels;
             let pixel = this.pixel;
-            let r = (out     ) & 3;
-            let g = (out >> 2) & 3;
-            let b = (out >> 4) & 3;
-
-            for (let i = 0; i < 4; i++) {
-                pixels[pixel++] = 85 * r;
-                pixels[pixel++] = 85 * g;
-                pixels[pixel++] = 85 * b;
-                pixel++;
-            }
-
-            this.pixel = pixel;
+            let r = 85 * ((out     ) & 3);
+            let g = 85 * ((out >> 2) & 3);
+            let b = 85 * ((out >> 4) & 3);
+            pixels[pixel+0] = pixels[pixel+4] = pixels[pixel+8] = pixels[pixel+12] = r;
+            pixels[pixel+1] = pixels[pixel+5] = pixels[pixel+9] = pixels[pixel+13] = g;
+            pixels[pixel+2] = pixels[pixel+6] = pixels[pixel+10] = pixels[pixel+14] = b;
+            this.pixel = pixel + 16;
         }
 
         this.col += 4;

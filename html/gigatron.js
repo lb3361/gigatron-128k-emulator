@@ -38,7 +38,6 @@ export class Gigatron {
         this.inReg = 0xff; // active low!
         this.ctrl = 0x7c;
         this.bank = 0;
-        this.prevctrl = -1;
         this.miso = 0;
     }
 
@@ -47,7 +46,6 @@ export class Gigatron {
         let pc = this.pc;
         this.pc = this.nextpc;
         this.nextpc = (this.pc + 1) & this.romMask;
-        this.prevctrl = -1;
 
         let ir = this.rom[pc];
         let d = (ir >> 0) & 0x00ff;
@@ -165,7 +163,6 @@ export class Gigatron {
                 b = 0;
                 console.error('UNDEFINED BEHAVIOR!');
             } else {
-                this.prevctrl = this.ctrl;
                 this.ctrl = addr & 0x80fd;
                 this.bank = ((this.ctrl & 0xc0) << 9) ^ 0x8000;
                 w = 0;
