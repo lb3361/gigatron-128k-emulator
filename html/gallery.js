@@ -109,7 +109,7 @@ export class Gallery {
                 item.data('program', program)
 
                 // Create screenshot element
-                const screenshot = $(`<img class="program-screenshot" src="" alt="Screenshot"` +
+                const screenshot = $(`<img class="program-screenshot" src="" alt="Screenshot" draggable="false"` +
                                       `onerror="this.onerror=null; this.src='programs/thumbnail.png'">`);
                 let screenshotPath = "programs/thumbnail.png";
                 if (program.screenshot)
